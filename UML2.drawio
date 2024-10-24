@@ -1,90 +1,59 @@
-<mxfile host="Electron" version="24.7.17">
-  <diagram name="FCS Appointment Scheduling Service" id="diagram-1">
-    <mxGraphModel grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1">
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
+Patient](
+patientID: int,
+firstName: string,
+lastName: string,
+email: string,
+phone: string,
+address: string,
+insuranceInfo: string,
+scheduleAppointment(): void,
+cancelAppointment(): void,
+viewAppointment(): void
+)
 
-        <!-- Patient Class -->
-        <mxCell id="patient" value="Patient" style="shape=swimlane;rounded=1;labelBackgroundColor=none;" vertex="1" parent="1">
-          <mxGeometry x="100" y="100" width="160" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="p1" value="Attributes: patientID, firstName, lastName, email, phone, address, insuranceInfo" vertex="1" parent="patient">
-          <mxGeometry y="40" width="160" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="p2" value="Methods: scheduleAppointment(), cancelAppointment(), viewAppointment()" vertex="1" parent="patient">
-          <mxGeometry y="100" width="160" height="60" as="geometry" />
-        </mxCell>
+[Appointment](
+appointmentID: int,
+date: Date,
+time: Time,
+status: string,
+patient: Patient,
+clinicalStaff: ClinicalStaff,
+confirmAppointment(): void,
+reschedule(): void,
+cancel(): void
+)
 
-        <!-- Appointment Class -->
-        <mxCell id="appointment" value="Appointment" style="shape=swimlane;rounded=1;" vertex="1" parent="1">
-          <mxGeometry x="300" y="100" width="160" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="a1" value="Attributes: appointmentID, date, time, status" vertex="1" parent="appointment">
-          <mxGeometry y="40" width="160" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="a2" value="Methods: confirmAppointment(), reschedule(), cancel()" vertex="1" parent="appointment">
-          <mxGeometry y="100" width="160" height="60" as="geometry" />
-        </mxCell>
+[ClinicalStaff](
+staffID: int,
+name: string,
+specialization: string,
+phone: string,
+email: string,
+appointments: Set<Appointment>
+)
 
-        <!-- Clinical Staff Class -->
-        <mxCell id="staff" value="Clinical Staff" style="shape=swimlane;rounded=1;" vertex="1" parent="1">
-          <mxGeometry x="500" y="100" width="160" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="s1" value="Attributes: staffID, name, specialization, phone, email" vertex="1" parent="staff">
-          <mxGeometry y="40" width="160" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="s2" value="Methods: viewAppointments(), confirmAppointment()" vertex="1" parent="staff">
-          <mxGeometry y="100" width="160" height="60" as="geometry" />
-        </mxCell>
+[Receptionist](
+receptionistID: int,
+name: string,
+username: string,
+phone: string,
+appointments: Set<Appointment>,
+manageAppointment(): void
+)
 
-        <!-- Receptionist Class -->
-        <mxCell id="receptionist" value="Receptionist" style="shape=swimlane;rounded=1;" vertex="1" parent="1">
-          <mxGeometry x="700" y="100" width="160" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="r1" value="Attributes: receptionistID, name, username, phone" vertex="1" parent="receptionist">
-          <mxGeometry y="40" width="160" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="r2" value="Methods: manageAppointment(), scheduleAppointment(), reschedule()" vertex="1" parent="receptionist">
-          <mxGeometry y="100" width="160" height="60" as="geometry" />
-        </mxCell>
+[Administrator](
+adminID: int,
+name: string,
+username: string,
+role: string,
+manageUsers(): void,
+updateSystemSettings(): void
+)
 
-        <!-- Administrator Class -->
-        <mxCell id="admin" value="Administrator" style="shape=swimlane;rounded=1;" vertex="1" parent="1">
-          <mxGeometry x="900" y="100" width="160" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="ad1" value="Attributes: adminID, name, username, role" vertex="1" parent="admin">
-          <mxGeometry y="40" width="160" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="ad2" value="Methods: manageUsers(), updateSystemSettings()" vertex="1" parent="admin">
-          <mxGeometry y="100" width="160" height="60" as="geometry" />
-        </mxCell>
-
-        <!-- Availability Class -->
-        <mxCell id="availability" value="Availability" style="shape=swimlane;rounded=1;" vertex="1" parent="1">
-          <mxGeometry x="1100" y="100" width="160" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="av1" value="Attributes: availabilityID, date, time, staffID" vertex="1" parent="availability">
-          <mxGeometry y="40" width="160" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="av2" value="Methods: updateAvailability()" vertex="1" parent="availability">
-          <mxGeometry y="100" width="160" height="60" as="geometry" />
-        </mxCell>
-
-        <!-- Relationships -->
-        <mxCell id="rel1" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;rounded=0;" edge="1" parent="1" source="patient" target="appointment">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="rel2" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;rounded=0;" edge="1" parent="1" source="staff" target="appointment">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="rel3" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;rounded=0;" edge="1" parent="1" source="receptionist" target="appointment">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="rel4" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;rounded=0;" edge="1" parent="1" source="availability" target="staff">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-      </root>
-    </mxGraphModel>
-  </diagram>
-</mxfile>
+[Availability](
+availabilityID: int,
+date: Date,
+time: Time,
+staff: ClinicalStaff,
+updateAvailability(): void
+)
