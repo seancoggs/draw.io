@@ -1,63 +1,89 @@
-<mxfile host="app.diagrams.net">
-  <diagram name="FCS Appointment Scheduling Program" id="class-diagram">
-    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1">
+<mxfile host="Electron" version="24.7.17">
+  <diagram name="FCS Appointment Scheduling Service" id="diagram-1">
+    <mxGraphModel grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
 
         <!-- Patient Class -->
-        <mxCell id="Patient" value="Patient&#10;---------------------&#10;patientID&#10;firstName&#10;lastName&#10;email&#10;phone&#10;address&#10;insuranceInfo&#10;---------------------&#10;scheduleAppointment()&#10;cancelAppointment()&#10;viewAppointment()" 
-          style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="20" y="20" width="160" height="160" as="geometry"/>
+        <mxCell id="patient" value="Patient" style="shape=swimlane;rounded=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="100" y="100" width="160" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="p1" value="Attributes: patientID, firstName, lastName, email, phone, address, insuranceInfo" vertex="1" parent="patient">
+          <mxGeometry y="40" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p2" value="Methods: scheduleAppointment(), cancelAppointment(), viewAppointment()" vertex="1" parent="patient">
+          <mxGeometry y="100" width="160" height="60" as="geometry" />
         </mxCell>
 
         <!-- Appointment Class -->
-        <mxCell id="Appointment" value="Appointment&#10;---------------------&#10;appointmentID&#10;date&#10;time&#10;status&#10;---------------------&#10;confirmAppointment()&#10;reschedule()&#10;cancel()" 
-          style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="240" y="20" width="160" height="140" as="geometry"/>
+        <mxCell id="appointment" value="Appointment" style="shape=swimlane;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="100" width="160" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" value="Attributes: appointmentID, date, time, status" vertex="1" parent="appointment">
+          <mxGeometry y="40" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" value="Methods: confirmAppointment(), reschedule(), cancel()" vertex="1" parent="appointment">
+          <mxGeometry y="100" width="160" height="60" as="geometry" />
         </mxCell>
 
-        <!-- ClinicalStaff Class -->
-        <mxCell id="ClinicalStaff" value="ClinicalStaff&#10;---------------------&#10;staffID&#10;name&#10;specialization&#10;phone&#10;email&#10;---------------------&#10;viewAppointments()&#10;confirmAppointment()" 
-          style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="20" y="240" width="160" height="160" as="geometry"/>
+        <!-- Clinical Staff Class -->
+        <mxCell id="staff" value="Clinical Staff" style="shape=swimlane;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="100" width="160" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="s1" value="Attributes: staffID, name, specialization, phone, email" vertex="1" parent="staff">
+          <mxGeometry y="40" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="s2" value="Methods: viewAppointments(), confirmAppointment()" vertex="1" parent="staff">
+          <mxGeometry y="100" width="160" height="60" as="geometry" />
         </mxCell>
 
         <!-- Receptionist Class -->
-        <mxCell id="Receptionist" value="Receptionist&#10;---------------------&#10;receptionistID&#10;name&#10;username&#10;phone&#10;---------------------&#10;manageAppointment()&#10;scheduleAppointment()&#10;reschedule()" 
-          style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="240" y="240" width="180" height="140" as="geometry"/>
+        <mxCell id="receptionist" value="Receptionist" style="shape=swimlane;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="100" width="160" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="r1" value="Attributes: receptionistID, name, username, phone" vertex="1" parent="receptionist">
+          <mxGeometry y="40" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="r2" value="Methods: manageAppointment(), scheduleAppointment(), reschedule()" vertex="1" parent="receptionist">
+          <mxGeometry y="100" width="160" height="60" as="geometry" />
         </mxCell>
 
         <!-- Administrator Class -->
-        <mxCell id="Administrator" value="Administrator&#10;---------------------&#10;adminID&#10;name&#10;username&#10;role&#10;---------------------&#10;manageUsers()&#10;updateSystemSettings()" 
-          style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="460" y="20" width="180" height="140" as="geometry"/>
+        <mxCell id="admin" value="Administrator" style="shape=swimlane;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="100" width="160" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="ad1" value="Attributes: adminID, name, username, role" vertex="1" parent="admin">
+          <mxGeometry y="40" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ad2" value="Methods: manageUsers(), updateSystemSettings()" vertex="1" parent="admin">
+          <mxGeometry y="100" width="160" height="60" as="geometry" />
         </mxCell>
 
         <!-- Availability Class -->
-        <mxCell id="Availability" value="Availability&#10;---------------------&#10;availabilityID&#10;date&#10;time&#10;staffID&#10;---------------------&#10;updateAvailability()" 
-          style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="460" y="240" width="180" height="120" as="geometry"/>
+        <mxCell id="availability" value="Availability" style="shape=swimlane;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="100" width="160" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="av1" value="Attributes: availabilityID, date, time, staffID" vertex="1" parent="availability">
+          <mxGeometry y="40" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="av2" value="Methods: updateAvailability()" vertex="1" parent="availability">
+          <mxGeometry y="100" width="160" height="60" as="geometry" />
         </mxCell>
 
         <!-- Relationships -->
-        <mxCell id="patient-appointment" style="endArrow=block;html=1;" edge="1" source="Patient" target="Appointment" parent="1">
+        <mxCell id="rel1" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;rounded=0;" edge="1" parent="1" source="patient" target="appointment">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <mxCell id="staff-appointment" style="endArrow=block;html=1;" edge="1" source="ClinicalStaff" target="Appointment" parent="1">
+        <mxCell id="rel2" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;rounded=0;" edge="1" parent="1" source="staff" target="appointment">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <mxCell id="receptionist-appointment" style="endArrow=block;html=1;" edge="1" source="Receptionist" target="Appointment" parent="1">
+        <mxCell id="rel3" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;rounded=0;" edge="1" parent="1" source="receptionist" target="appointment">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <mxCell id="availability-staff" style="endArrow=block;html=1;" edge="1" source="Availability" target="ClinicalStaff" parent="1">
+        <mxCell id="rel4" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;rounded=0;" edge="1" parent="1" source="availability" target="staff">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
       </root>
     </mxGraphModel>
   </diagram>
