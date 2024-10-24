@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mxfile host="app.diagrams.net">
-  <diagram name="Class Diagram">
+  <diagram name="FCS Class Diagram">
     <mxGraphModel>
       <root>
         <mxCell id="0" />
@@ -8,50 +8,56 @@
 
         <!-- Patient Class -->
         <mxCell id="patient" value="Patient" style="shape=swimlane;" vertex="1" parent="1">
-          <mxGeometry width="180" height="240" as="geometry" />
+          <mxGeometry width="220" height="240" as="geometry" />
         </mxCell>
-        <mxCell id="patientAttributes" value="Attributes:&#10;id&#10;firstName&#10;lastName&#10;address&#10;phoneNumbers&#10;emailAddress&#10;emergencyContact" style="text;align=left;" vertex="1" parent="patient">
-          <mxGeometry width="180" height="120" y="30" as="geometry" />
+        <mxCell id="patientAttributes" value="Attributes:&#10;id&#10;firstName&#10;lastName&#10;email&#10;address&#10;phone&#10;insuranceAccount" style="text;align=left;" vertex="1" parent="patient">
+          <mxGeometry width="220" height="120" y="30" as="geometry" />
         </mxCell>
-        <mxCell id="patientMethods" value="Methods:&#10;scheduleAppointment()&#10;changeAppointment()&#10;cancelAppointment()&#10;viewAppointment()&#10;getDetails()&#10;setDetails()" style="text;align=left;" vertex="1" parent="patient">
-          <mxGeometry width="180" height="120" y="150" as="geometry" />
+        <mxCell id="patientMethods" value="Methods:&#10;scheduleAppointment()&#10;cancelAppointment()&#10;getDetails()" style="text;align=left;" vertex="1" parent="patient">
+          <mxGeometry width="220" height="90" y="150" as="geometry" />
         </mxCell>
 
         <!-- Appointment Class -->
         <mxCell id="appointment" value="Appointment" style="shape=swimlane;" vertex="1" parent="1">
-          <mxGeometry width="180" height="140" as="geometry" />
+          <mxGeometry x="250" y="0" width="220" height="200" as="geometry" />
         </mxCell>
-        <mxCell id="appointmentAttributes" value="Attributes:&#10;id&#10;dateTime&#10;reason&#10;notes" style="text;align=left;" vertex="1" parent="appointment">
-          <mxGeometry width="180" height="60" y="30" as="geometry" />
+        <mxCell id="appointmentAttributes" value="Attributes:&#10;id&#10;date&#10;startTime&#10;endTime&#10;status" style="text;align=left;" vertex="1" parent="appointment">
+          <mxGeometry width="220" height="90" y="30" as="geometry" />
         </mxCell>
-        <mxCell id="appointmentMethods" value="Methods:&#10;reschedule()&#10;cancel()" style="text;align=left;" vertex="1" parent="appointment">
-          <mxGeometry width="180" height="60" y="90" as="geometry" />
-        </mxCell>
-
-        <!-- UserAccount Class -->
-        <mxCell id="userAccount" value="UserAccount" style="shape=swimlane;" vertex="1" parent="1">
-          <mxGeometry width="180" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="userAccountAttributes" value="Attributes:&#10;username&#10;password&#10;securityQuestion&#10;securityAnswer&#10;role" style="text;align=left;" vertex="1" parent="userAccount">
-          <mxGeometry width="180" height="80" y="30" as="geometry" />
-        </mxCell>
-        <mxCell id="userAccountMethods" value="Methods:&#10;login()&#10;logout()" style="text;align=left;" vertex="1" parent="userAccount">
-          <mxGeometry width="180" height="50" y="110" as="geometry" />
+        <mxCell id="appointmentMethods" value="Methods:&#10;confirm()&#10;cancel()" style="text;align=left;" vertex="1" parent="appointment">
+          <mxGeometry width="220" height="60" y="120" as="geometry" />
         </mxCell>
 
-        <!-- Staff Class -->
-        <mxCell id="staff" value="Staff" style="shape=swimlane;" vertex="1" parent="1">
-          <mxGeometry width="180" height="80" as="geometry" />
+        <!-- Doctor Class -->
+        <mxCell id="doctor" value="Doctor" style="shape=swimlane;" vertex="1" parent="1">
+          <mxGeometry x="500" y="0" width="220" height="180" as="geometry" />
         </mxCell>
-        <mxCell id="staffMethods" value="Methods:&#10;viewPatientDetails()" style="text;align=left;" vertex="1" parent="staff">
-          <mxGeometry width="180" height="50" y="30" as="geometry" />
+        <mxCell id="doctorAttributes" value="Attributes:&#10;id&#10;firstName&#10;lastName&#10;specialization&#10;phone" style="text;align=left;" vertex="1" parent="doctor">
+          <mxGeometry width="220" height="90" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="doctorMethods" value="Methods:&#10;viewSchedule()&#10;confirmAppointment()" style="text;align=left;" vertex="1" parent="doctor">
+          <mxGeometry width="220" height="60" y="120" as="geometry" />
+        </mxCell>
+
+        <!-- Receptionist Class -->
+        <mxCell id="receptionist" value="Receptionist" style="shape=swimlane;" vertex="1" parent="1">
+          <mxGeometry x="750" y="0" width="220" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="receptionistAttributes" value="Attributes:&#10;id&#10;firstName&#10;lastName&#10;username&#10;password" style="text;align=left;" vertex="1" parent="receptionist">
+          <mxGeometry width="220" height="60" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="receptionistMethods" value="Methods:&#10;scheduleAppointment()" style="text;align=left;" vertex="1" parent="receptionist">
+          <mxGeometry width="220" height="60" y="90" as="geometry" />
         </mxCell>
 
         <!-- Relationships -->
-        <mxCell id="relationship1" value="schedules" edge="1" parent="1" source="patient" target="appointment">
+        <mxCell id="rel1" value="schedules" edge="1" parent="1" source="receptionist" target="appointment">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="relationship2" value="has" edge="1" parent="1" source="staff" target="patient">
+        <mxCell id="rel2" value="has" edge="1" parent="1" source="doctor" target="appointment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel3" value="books" edge="1" parent="1" source="patient" target="appointment">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
